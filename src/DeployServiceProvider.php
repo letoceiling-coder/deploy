@@ -41,7 +41,11 @@ class DeployServiceProvider extends ServiceProvider
         );
 
         // Load routes automatically with /api prefix
-        Route::prefix('api')->middleware('api')->group(function () {
+        // Using Route::group to ensure prefix is applied correctly
+        Route::group([
+            'prefix' => 'api',
+            'middleware' => 'api'
+        ], function () {
             Route::post('/deploy', [DeployController::class, 'handle']);
         });
 
