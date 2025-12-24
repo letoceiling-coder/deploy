@@ -6,9 +6,29 @@
 
 ### 1. Подключение к серверу
 
+**⚠️ ВАЖНО:** `server.beget.com` - это НЕ правильный хост!
+
+**Правильный способ:**
+1. Войдите в панель Beget: https://beget.com/ru
+2. Перейдите: **Хостинг → SSH → Включить SSH**
+3. Скопируйте **правильный хост** из панели (обычно `serverXX.beget.tech` или `hostXX.beget.pro`)
+4. Подключитесь:
+
 ```bash
-ssh letocewh@server.beget.com
+ssh letocewh@ПРАВИЛЬНЫЙ_ХОСТ_ИЗ_ПАНЕЛИ
 ```
+
+**Пример:**
+```bash
+ssh letocewh@server12.beget.tech
+```
+
+**Альтернатива:** Используйте IP адрес или домен:
+```bash
+ssh letocewh@letocewh.beget.tech
+```
+
+Подробнее см. [SSH_CONNECTION.md](SSH_CONNECTION.md)
 
 ### 2. Переход в директорию проекта
 
