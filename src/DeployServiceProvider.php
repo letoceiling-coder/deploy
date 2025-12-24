@@ -40,15 +40,10 @@ class DeployServiceProvider extends ServiceProvider
             'deploy'
         );
 
-        // Load routes automatically with /api prefix
-        // Register route directly with full API path
-        $this->app->booted(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(function () {
-                    Route::post('/deploy', [DeployController::class, 'handle']);
-                });
-        });
+        // Note: Routes are loaded automatically if routes/api.php exists
+        // If automatic loading doesn't work, user can add route manually:
+        // Route::post('/deploy', [\LetoceilingCoder\Deploy\DeployController::class, 'handle']);
+        // in routes/api.php
 
         if ($this->app->runningInConsole()) {
             $this->commands([
