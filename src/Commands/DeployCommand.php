@@ -27,7 +27,7 @@ class DeployCommand extends Command
                             {--insecure : Disable SSL verification}
                             {--with-seed : Execute seeders on server}
                             {--branch= : Branch to deploy}
-                            {--version= : Specific version/tag to deploy}';
+                            {--tag= : Specific version/tag to deploy}';
 
     /**
      * The console command description.
@@ -127,7 +127,7 @@ class DeployCommand extends Command
             insecure: $this->option('insecure'),
             withSeed: $this->option('with-seed'),
             branch: $this->option('branch'),
-            version: $this->option('version')
+            version: $this->option('tag')
         );
     }
 
