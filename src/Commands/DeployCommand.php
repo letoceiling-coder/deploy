@@ -248,8 +248,13 @@ class DeployCommand extends Command
 
         // Get commit hash for version
         $commitHash = $this->gitService->getCurrentCommitHash();
-        $version = $options->version ?? substr($commitHash, 0, 7);
-        $this->info("  Version: {$version}");
+        if (empty($commitHash)) {
+            $version = $options->version ?? 'initial';
+            $this->info("  Version: {$version} (no commits yet)");
+        } else {
+            $version = $options->version ?? substr($commitHash, 0, 7);
+            $this->info("  Version: {$version}");
+        }
 
         // Push to remote
         $remoteUrl = env('GIT_REPOSITORY_URL');
@@ -308,7 +313,8 @@ class DeployCommand extends Command
 
         $serverUrl = env('DEPLOY_SERVER_URL');
         $token = env('DEPLOY_TOKEN');
-        $version = $options->version ?? substr($this->gitService->getCurrentCommitHash(), 0, 7);
+        $commitHash = $this->gitService->getCurrentCommitHash();
+        $version = $options->version ?? (empty($commitHash) ? 'initial' : substr($commitHash, 0, 7));
 
         if ($options->dryRun) {
             $this->info("  [DRY-RUN] Would send POST request to: {$serverUrl}");

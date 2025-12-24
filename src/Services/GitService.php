@@ -31,7 +31,13 @@ class GitService implements GitServiceInterface
         $result = Process::run('git rev-parse --abbrev-ref HEAD');
         
         if (!$result->successful()) {
-            throw new GitException('Failed to get current branch: ' . $result->errorOutput());
+            // Если нет коммитов, попробуем получить ветку из конфига
+            $configResult = Process::run('git config --get init.defaultBranch');
+            if ($configResult->successful() && !empty(trim($configResult->output()))) {
+                return trim($configResult->output());
+            }
+            // По умолчанию используем main
+            return 'main';
         }
 
         return trim($result->output());
@@ -42,7 +48,9 @@ class GitService implements GitServiceInterface
         $result = Process::run('git rev-parse HEAD');
         
         if (!$result->successful()) {
-            throw new GitException('Failed to get commit hash: ' . $result->errorOutput());
+            // Если нет коммитов, возвращаем пустую строку
+            // Это нормально для нового репозитория
+            return '';
         }
 
         return trim($result->output());
