@@ -1,8 +1,18 @@
 {
     "name": "letoceiling-coder/deploy",
-    "description": "Automated deployment package for Laravel projects",
+    "description": "Automated deployment package for Laravel projects with Git and HTTP API integration",
     "type": "library",
+    "keywords": [
+        "laravel",
+        "deploy",
+        "deployment",
+        "git",
+        "automation",
+        "ci-cd",
+        "laravel-package"
+    ],
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Letoceiling Coder",
@@ -33,10 +43,27 @@
         "laravel": {
             "providers": [
                 "LetoceilingCoder\\Deploy\\DeployServiceProvider"
-            ]
+            ],
+            "aliases": {}
         }
     },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "homepage": "https://github.com/letoceiling-coder/deploy",
+    "support": {
+        "issues": "https://github.com/letoceiling-coder/deploy/issues",
+        "source": "https://github.com/letoceiling-coder/deploy"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/letoceiling-coder/deploy.git"
+        }
+    ]
 }
 

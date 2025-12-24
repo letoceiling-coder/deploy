@@ -1,12 +1,29 @@
 # Laravel Deploy Package
 
+[![Latest Version](https://img.shields.io/github/v/release/letoceiling-coder/deploy)](https://github.com/letoceiling-coder/deploy)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PHP Version](https://img.shields.io/badge/php-8.1%2B-blue.svg)](https://php.net)
+[![Laravel Version](https://img.shields.io/badge/laravel-10.0%2B-red.svg)](https://laravel.com)
+
 Автоматический деплой Laravel-проектов на сервер через Git и HTTP API.
+
+## ✨ Особенности
+
+- 🚀 **Простая установка** - один команда через Composer
+- 🔄 **Автоматический деплой** - Git commit, push и HTTP запрос на сервер
+- 🛠️ **Гибкая настройка** - множество флагов для различных сценариев
+- 📝 **Подробное логирование** - все операции записываются в лог
+- 🔒 **Безопасность** - токены маскируются, SSL проверка
+- 🧪 **Dry-run режим** - тестирование без выполнения
+- 📦 **Автоматическая регистрация** - Laravel Package Auto-Discovery
 
 ## 📦 Установка
 
 ```bash
 composer require letoceiling-coder/deploy
 ```
+
+Пакет автоматически регистрируется. Никаких дополнительных действий не требуется!
 
 ## ⚙️ Настройка
 
@@ -337,15 +354,40 @@ DEPLOY_TOKEN=your-token-here
 php artisan deploy --insecure
 ```
 
+## 📚 Документация
+
+- [INSTALLATION.md](INSTALLATION.md) - Подробная инструкция по установке
+- [USAGE.md](USAGE.md) - Примеры использования и best practices
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Решение типичных проблем
+- [DEPLOY_SERVER_EXAMPLE.md](DEPLOY_SERVER_EXAMPLE.md) - Пример серверного endpoint
+- [SERVER_SETUP.md](SERVER_SETUP.md) - Настройка сервера Beget
+- [CHANGELOG.md](CHANGELOG.md) - История изменений
+
+## 🤝 Поддержка
+
+Если у вас возникли проблемы:
+
+1. Проверьте [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+2. Создайте [Issue](https://github.com/letoceiling-coder/deploy/issues)
+
 ## 📄 Лицензия
 
-MIT License
+MIT License. См. [LICENSE](LICENSE) файл для деталей.
 
 ## 👤 Автор
 
-Letoceiling Coder
+**Letoceiling Coder**
 
-## 🔗 Связанные документы
+- GitHub: [@letoceiling-coder](https://github.com/letoceiling-coder)
+- Email: dev@letocewh.beget.tech
 
-- [SERVER_SETUP.md](SERVER_SETUP.md) - Настройка сервера Beget
+## 🙏 Благодарности
+
+Спасибо всем, кто использует и улучшает этот пакет!
+
+## 📈 Статистика
+
+- Версия: 1.0.0
+- PHP: 8.1+
+- Laravel: 10.0+ / 11.0+
 

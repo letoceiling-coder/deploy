@@ -32,16 +32,22 @@ class DeployServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Merge config file
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/deploy.php',
+            'deploy'
+        );
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 DeployCommand::class,
             ]);
-        }
 
-        // Publish config file (optional)
-        $this->publishes([
-            __DIR__ . '/../config/deploy.php' => config_path('deploy.php'),
-        ], 'deploy-config');
+            // Publish config file (optional)
+            $this->publishes([
+                __DIR__ . '/../config/deploy.php' => config_path('deploy.php'),
+            ], 'deploy-config');
+        }
     }
 }
 
