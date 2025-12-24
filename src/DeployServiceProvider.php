@@ -9,6 +9,7 @@ use LetoceilingCoder\Deploy\Contracts\BuildServiceInterface;
 use LetoceilingCoder\Deploy\Contracts\GitServiceInterface;
 use LetoceilingCoder\Deploy\Contracts\HttpDeployServiceInterface;
 use LetoceilingCoder\Deploy\Contracts\LoggerServiceInterface;
+use LetoceilingCoder\Deploy\DeployController;
 use LetoceilingCoder\Deploy\Services\BuildService;
 use LetoceilingCoder\Deploy\Services\GitService;
 use LetoceilingCoder\Deploy\Services\HttpDeployService;
@@ -40,12 +41,9 @@ class DeployServiceProvider extends ServiceProvider
         );
 
         // Load routes automatically with /api prefix
-        // We need to load routes inside API group to get /api prefix
-        if (file_exists($routesPath = __DIR__ . '/../routes/deploy.php')) {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group($routesPath);
-        }
+        Route::prefix('api')->middleware('api')->group(function () {
+            Route::post('/deploy', [DeployController::class, 'handle']);
+        });
 
         if ($this->app->runningInConsole()) {
             $this->commands([
