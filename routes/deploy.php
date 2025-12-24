@@ -198,5 +198,5 @@ Route::post('/deploy', function (Request $request) {
             'timestamp' => now()->toDateTimeString()
         ], 500);
     }
-})->middleware('api');
+});
 
