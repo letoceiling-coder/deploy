@@ -40,9 +40,12 @@ class DeployServiceProvider extends ServiceProvider
         );
 
         // Load routes automatically with /api prefix
-        Route::prefix('api')->middleware('api')->group(function () {
-            require __DIR__ . '/../routes/deploy.php';
-        });
+        // We need to load routes inside API group to get /api prefix
+        if (file_exists($routesPath = __DIR__ . '/../routes/deploy.php')) {
+            Route::middleware('api')
+                ->prefix('api')
+                ->group($routesPath);
+        }
 
         if ($this->app->runningInConsole()) {
             $this->commands([
