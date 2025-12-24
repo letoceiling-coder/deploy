@@ -2,6 +2,7 @@
 
 namespace LetoceilingCoder\Deploy;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use LetoceilingCoder\Deploy\Commands\DeployCommand;
 use LetoceilingCoder\Deploy\Contracts\BuildServiceInterface;
