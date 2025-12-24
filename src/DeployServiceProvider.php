@@ -38,8 +38,10 @@ class DeployServiceProvider extends ServiceProvider
             'deploy'
         );
 
-        // Load routes automatically
-        $this->loadRoutesFrom(__DIR__ . '/../routes/deploy.php');
+        // Load routes automatically with /api prefix
+        Route::prefix('api')->middleware('api')->group(function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/deploy.php');
+        });
 
         if ($this->app->runningInConsole()) {
             $this->commands([
