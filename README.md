@@ -42,7 +42,19 @@ DEPLOY_SERVER_URL=https://your-server.com/api/deploy
 DEPLOY_TOKEN=your-secret-token-here
 ```
 
-### 2. Публикация конфигурации (опционально)
+### 2. Автоматическая установка роутов
+
+**Роуты устанавливаются автоматически!** Endpoint `/api/deploy` будет доступен сразу после установки пакета.
+
+Если нужно кастомизировать роуты, опубликуйте файл:
+
+```bash
+php artisan vendor:publish --tag=deploy-routes
+```
+
+Это создаст файл `routes/deploy.php`, который вы можете редактировать.
+
+### 3. Публикация конфигурации (опционально)
 
 ```bash
 php artisan vendor:publish --tag=deploy-config

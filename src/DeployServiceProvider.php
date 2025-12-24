@@ -38,6 +38,9 @@ class DeployServiceProvider extends ServiceProvider
             'deploy'
         );
 
+        // Load routes automatically
+        $this->loadRoutesFrom(__DIR__ . '/../routes/deploy.php');
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 DeployCommand::class,
@@ -47,6 +50,11 @@ class DeployServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/deploy.php' => config_path('deploy.php'),
             ], 'deploy-config');
+
+            // Publish routes file (optional, for customization)
+            $this->publishes([
+                __DIR__ . '/../routes/deploy.php' => base_path('routes/deploy.php'),
+            ], 'deploy-routes');
         }
     }
 }
