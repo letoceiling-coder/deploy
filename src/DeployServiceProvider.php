@@ -40,14 +40,10 @@ class DeployServiceProvider extends ServiceProvider
             'deploy'
         );
 
-        // Load routes automatically with /api prefix
-        // Using Route::group to ensure prefix is applied correctly
-        Route::group([
-            'prefix' => 'api',
-            'middleware' => 'api'
-        ], function () {
-            Route::post('/deploy', [DeployController::class, 'handle']);
-        });
+        // Load routes automatically
+        // In Laravel, routes loaded in ServiceProvider are registered globally
+        // We register with full path to ensure /api prefix
+        Route::post('api/deploy', [DeployController::class, 'handle'])->middleware('api');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
